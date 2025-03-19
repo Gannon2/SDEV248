@@ -1,0 +1,66 @@
+using System;
+
+namespace M01___Boxing
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Prompts the user to input the boxer's weight.
+            Console.Write("Please enter the boxer's weight in pounds: ");
+
+            // This tries to parse the input and handle invalid inputs.
+            double weight;
+            if (double.TryParse(Console.ReadLine(), out weight))
+            {
+                // The weight classes are defined here.
+                string weightClass = "";
+
+                if (weight > 190)
+                {
+                    weightClass = "Heavyweight";
+                }
+                else if (weight > 175)
+                {
+                    weightClass = "Cruiserweight";
+                }
+                else if (weight > 168)
+                {
+                    weightClass = "Light Heavyweight";
+                }
+                else if (weight > 160)
+                {
+                    weightClass = "Super Middleweight";
+                }
+                else if (weight > 154)
+                {
+                    weightClass = "Middleweight";
+                }
+                else if (weight > 147)
+                {
+                    weightClass = "Junior Middleweight";
+                }
+                else if (weight > 140)
+                {
+                    weightClass = "Welterweight";
+                }
+                else if (weight > 135)
+                {
+                    weightClass = "Junior Welterweight";
+                }
+                else
+                {
+                    weightClass = "Below Welterweight";
+                }
+
+                // Gives the user the output and their weight class.
+                Console.WriteLine($"You entered {weight} pounds, which means you will be competing in the {weightClass} class.");
+            }
+            else
+            {
+                // If the input is invalid, this displays an error message.
+                Console.WriteLine("Num Error: Please enter a valid number for the weight.");
+            }
+        }
+    }
+}
