@@ -1,0 +1,42 @@
+using System;
+
+namespace Multiplying
+{
+    class Program
+    {
+        // Calculates the product of three numbers.
+        static float Multiply(float num1, float num2, float num3)
+        {
+            return num1 * num2 * num3;
+        }
+
+        // Gets a valid float input from the user.
+        static float ValidInput(string prompt)
+        {
+            float number;
+            Console.WriteLine(prompt);
+
+            // Continues asking until the user enters a valid number.
+            while (!float.TryParse(Console.ReadLine(), out number))
+            {
+                Console.WriteLine("Please enter a valid number.");
+            }
+
+            return number;
+        }
+
+        static void Main(string[] args)
+        {
+            // Use the GetValidFloatInput method to prompt for and validate user input.
+            float number1 = ValidInput("Enter the first number:");
+            float number2 = ValidInput("Enter the second number:");
+            float number3 = ValidInput("Enter the third number:");
+
+            // Calls the method created to multiply the numbers.
+            float result = Multiply(number1, number2, number3);
+
+            // Displays the result.
+            Console.WriteLine($"The product of {number1}, {number2}, and {number3} is: {result}");
+        }
+    }
+}
