@@ -1,0 +1,29 @@
+
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        // Stores the exam scores in an array.
+        int[] scores = { 40, 80, 50, 75, 60, 55 };
+
+        // Displays the original scores.
+        Console.WriteLine("Original Scores:");
+        foreach (int score in scores)
+        {
+            Console.WriteLine(score);
+        }
+
+        // Sorts the scores in ascending order.
+        Array.Sort(scores);
+
+        // Displays the sorted scores.
+        Console.WriteLine("\nSorted Scores:");
+        foreach (int score in scores)
+        {
+            Console.WriteLine(score);
+        }
+    }
+}
