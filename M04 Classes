@@ -1,0 +1,81 @@
+using System;
+
+class Automobile
+{
+    private int year;
+    private string make;
+    private string model;
+    private int doors;
+    private string roof;
+
+    // Initializes the automobile.
+    public Automobile(int year, string make, string model, int doors, string roof)
+    {
+        this.year = year;
+        this.make = make;
+        this.model = model;
+        this.doors = doors;
+        this.roof = roof;
+    }
+
+    // Acesses and sets the fields.
+    public int Year
+    {
+        get { return year; }
+        set { year = value; }
+    }
+
+    public string Make
+    {
+        get { return make; }
+        set { make = value; }
+    }
+
+    public string Model
+    {
+        get { return model; }
+        set { model = value; }
+    }
+
+    public int Doors
+    {
+        get { return doors; }
+        set
+        {
+            if (value == 2 || value == 4)
+                doors = value;
+        }
+    }
+
+    public string Roof
+    {
+        get { return roof; }
+        set
+        {
+            if (value.ToLower() == "solid" || value.ToLower() == "sun roof")
+                roof = value;
+        }
+    }
+
+    // This method displays the details of the automobile in the requested format.
+    public void DisplayDetails()
+    {
+        Console.WriteLine("Vehicle type: Car");
+        Console.WriteLine($"  Year: {year}");
+        Console.WriteLine($"  Make: {make}");
+        Console.WriteLine($"  Model: {model}");
+        Console.WriteLine($"  Number of doors: {doors}");
+        Console.WriteLine($"  Type of roof: {roof}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Automobile myCar = new Automobile(2022, "Toyota", "Corolla", 4, "sun roof");
+
+        // Displays the details of the automobile
+        myCar.DisplayDetails();
+    }
+}
