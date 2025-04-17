@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+
+namespace Media
+{
+
+    public class Product
+    {
+        public string StockID { get; set; }
+        public int StockCount { get; set; }
+        public string Manufacturer { get; set; }
+
+        public Product(string stockID, int stockCount, string manufacturer)
+        {
+            StockID = stockID;
+            StockCount = stockCount;
+            Manufacturer = manufacturer;
+        }
+    }
+
+    // Derived class for "Music CDs".
+    public class MusicCD : Product
+    {
+        public string Artist { get; set; }
+        public string Title { get; set; }
+
+        public MusicCD(string stockID, int stockCount, string manufacturer, string artist, string title)
+            : base(stockID, stockCount, manufacturer)
+        {
+            Artist = artist;
+            Title = title;
+        }
+
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"[CD] {Title} by {Artist} | Stock: {StockCount} | ID: {StockID} | Made by: {Manufacturer}");
+        }
+    }
+
+    // Derived class for "Magazines".
+    public class Magazine : Product
+    {
+        public string Title { get; set; }
+        public string MonthOfPublication { get; set; }
+
+        public Magazine(string stockID, int stockCount, string manufacturer, string title, string monthOfPublication)
+            : base(stockID, stockCount, manufacturer)
+        {
+            Title = title;
+            MonthOfPublication = monthOfPublication;
+        }
+
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"[Magazine] {Title} ({MonthOfPublication}) | Stock: {StockCount} | ID: {StockID} | Made by: {Manufacturer}");
+        }
+    }
+
+    // Derived class for "Books".
+    public class Book : Product
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+
+        public Book(string stockID, int stockCount, string manufacturer, string title, string author)
+            : base(stockID, stockCount, manufacturer)
+        {
+            Title = title;
+            Author = author;
+        }
+
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"[Book] {Title} by {Author} | Stock: {StockCount} | ID: {StockID} | Made by: {Manufacturer}");
+        }
+    }
+
+    // Program entry point.
+    class Program
+    {             // Displays the inventory.
+        static void Main(string[] args)
+        {
+            Console.WriteLine("=== Media Inventory System ===\n");
+
+            var cds = new List<MusicCD>
+            {
+                new MusicCD("CD001", 15, "Top Dawg Entertainment", "Kendrick Lamar", "DAMN."),
+                new MusicCD("CD002", 20, "Republic Records", "Taylor Swift", "1989"),
+                new MusicCD("CD003", 10, "Columbia", "Daft Punk", "Random Access Memories")
+            };
+
+            var books = new List<Book>
+            {
+                new Book("BK001", 12, "J.B. Lippincott & Co.", "To Kill a Mockingbird", "Harper Lee"),
+                new Book("BK002", 14, "Amulet Books", "Diary of a Wimpy Kid", "Jeff Kinney"),
+                new Book("BK003", 5, "Little, Brown and Company", "The Catcher in the Rye", "J.D. Salinger")
+            };
+
+            var magazines = new List<Magazine>
+            {
+                new Magazine("MG001", 30, "National Geographic Partners", "National Geographic", "April"),
+                new Magazine("MG002", 25, "TIME USA, LLC", "TIME", "March"),
+                new Magazine("MG003", 18, "Condé Nast", "The New Yorker", "January")
+            };
+
+            // Displays the CDs.
+            Console.WriteLine("Music CDs:");
+            foreach (var cd in cds)
+            {
+                cd.DisplayInfo();
+            }
+
+            // Displays the books.
+            Console.WriteLine("\nBooks:");
+            foreach (var book in books)
+            {
+                book.DisplayInfo();
+            }
+
+            // Displays the magazines.
+            Console.WriteLine("\nMagazines:");
+            foreach (var magazine in magazines)
+            {
+                magazine.DisplayInfo();
+            }
+
+            Console.WriteLine("\n=== End of Inventory ===");
+        }
+    }
+}
